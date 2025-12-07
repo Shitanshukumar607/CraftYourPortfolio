@@ -8,8 +8,8 @@ const epilogue = Epilogue({
 });
 
 export const metadata: Metadata = {
-  title: "ResumeCraft",
-  description: "Transform Your Resume into a Stunning Portfolio",
+  title: "CraftYourPortfolio",
+  description: "Craft Stunning Portfolio from your Resume",
 };
 
 export default function RootLayout({

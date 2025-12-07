@@ -1,5 +1,6 @@
 "use client";
 
+import { Upload } from "lucide-react";
 import { useState, useCallback } from "react";
 
 export default function FileDropZone() {
@@ -53,7 +54,6 @@ export default function FileDropZone() {
 
       if (response.ok) {
         setMessage("File uploaded successfully! Generating portfolio...");
-        // You can redirect or update UI here
       } else {
         setMessage("Upload failed. Please try again.");
       }
@@ -67,7 +67,6 @@ export default function FileDropZone() {
 
   return (
     <div className="w-full max-w-[600px] mx-auto flex flex-col gap-6">
-      {/* 5. File Drop Area */}
       <div
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
@@ -94,23 +93,8 @@ export default function FileDropZone() {
           onChange={handleFileChange}
         />
 
-        <div className="p-4 rounded-full bg-[#1A1A1A] mb-4 group-hover:scale-110 transition-transform duration-300">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="text-gray-400"
-          >
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-            <polyline points="17 8 12 3 7 8" />
-            <line x1="12" y1="3" x2="12" y2="15" />
-          </svg>
+        <div className="p-4 rounded-full bg-[#1A1A1A] mb-4 group-hover:scale-105 transition-transform duration-300">
+          <Upload size={28} className="text-gray-400" />
         </div>
 
         <h3 className="text-lg font-medium text-white mb-2">
@@ -129,7 +113,6 @@ export default function FileDropZone() {
         <div className="text-center text-sm text-red-400">{message}</div>
       )}
 
-      {/* 6. Primary CTA Button */}
       <button
         onClick={handleUpload}
         className="w-full py-4 rounded-xl bg-[#EAEAEA] text-black font-semibold text-lg hover:scale-[1.02] transition-transform duration-200 flex items-center justify-center gap-2"
@@ -138,7 +121,6 @@ export default function FileDropZone() {
         {!uploading && <span>→</span>}
       </button>
 
-      {/* 7. Secondary Link */}
       <div className="text-center space-y-1">
         <p className="text-sm text-gray-500">
           Don’t have a resume? No problem!
