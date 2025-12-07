@@ -3,7 +3,7 @@ import { Epilogue } from "next/font/google";
 import "./globals.css";
 
 const epilogue = Epilogue({
-  variable: "--font-epilogue",
+  variable: "--font",
   subsets: ["latin"],
 });
 

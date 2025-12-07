@@ -1,32 +1,28 @@
-import Navbar from "@/components/Navbar";
+import Banner from "@/components/Banner";
 import FileDropZone from "@/components/FileDropZone";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col">
+    <div className="min-h-screen bg-background text-foreground flex flex-col font-sans">
       <Navbar />
+      <Banner />
 
       <main className="grow flex flex-col items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
-        <div className="max-w-3xl w-full space-y-8 text-center">
+        <div className="max-w-[1100px] w-full space-y-12 text-center">
           <div>
-            <h1 className="text-4xl font-extrabold text-foreground sm:text-5xl md:text-6xl">
-              Transform Your Resume
+            <h1 className="text-xl md:text-3xl lg:text-4xl font-medium mb-3 md:mb-4 tracking-tight leading-[1.2] md:leading-[1.2] lg:leading-[1.2] max-w-3xl mx-auto px-2">
+              Turn Your Resume into a Portfolio in seconds
             </h1>
-            <p className="mt-3 max-w-md mx-auto text-base text-gray-400 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-              Drop your resume in the drag zone and it will generate a portfolio
-              in seconds.
-            </p>
+            <h2 className="text-xs md:text-base lg:text-lg font-normal mb-8 md:mb-10 text-muted-foreground leading-[1.6] md:leading-[1.6] lg:leading-[1.6] max-w-2xl mx-auto px-2">
+              Showcase your resume with a beautifully generated portfolio,
+              because your journey deserves more than a resume.
+            </h2>
           </div>
 
           <FileDropZone />
         </div>
       </main>
-
-      <footer className="bg-background border-t border-gray-800 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500">
-          &copy; {new Date().getFullYear()} ResumeCraft. All rights reserved.
-        </div>
-      </footer>
     </div>
   );
 }

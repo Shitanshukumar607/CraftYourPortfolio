@@ -66,95 +66,90 @@ export default function FileDropZone() {
   };
 
   return (
-    <div className="w-full max-w-xl mx-auto mt-10">
+    <div className="w-full max-w-[600px] mx-auto flex flex-col gap-6">
+      {/* 5. File Drop Area */}
       <div
-        className={`border-2 border-dashed rounded-lg p-10 text-center transition-colors duration-200 ease-in-out ${
-          isDragging
-            ? "border-blue-500 bg-blue-900/20"
-            : "border-gray-700 hover:border-gray-600 bg-gray-800/30"
-        }`}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
+        onClick={() => document.getElementById("fileInput")?.click()}
+        className={`
+          relative group cursor-pointer
+          flex flex-col items-center justify-center
+          w-full py-16 px-4
+          border-2 border-dashed rounded-2xl
+          transition-all duration-300 ease-in-out
+          ${
+            isDragging
+              ? "border-white bg-white/5"
+              : "border-[#2A2A2A] hover:border-gray-600 hover:bg-[#1A1A1A]"
+          }
+        `}
       >
         <input
-          type="file"
           id="fileInput"
+          type="file"
+          accept=".pdf"
           className="hidden"
           onChange={handleFileChange}
-          accept=".pdf,.doc,.docx"
         />
 
-        {file ? (
-          <div className="space-y-4">
-            <p className="text-lg font-medium text-gray-200">Selected file:</p>
-            <p className="text-gray-400 break-all">{file.name}</p>
-            <button
-              onClick={() => setFile(null)}
-              className="text-sm text-red-400 hover:text-red-300 underline"
-            >
-              Remove
-            </button>
-          </div>
-        ) : (
-          <div className="space-y-4">
-            <div className="flex justify-center">
-              <svg
-                className="w-12 h-12 text-gray-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                ></path>
-              </svg>
-            </div>
-            <p className="text-lg text-gray-300">
-              Drag & drop your resume here
-            </p>
-            <p className="text-sm text-gray-500">or</p>
-            <label
-              htmlFor="fileInput"
-              className="inline-block px-4 py-2 bg-blue-600 text-white rounded-md cursor-pointer hover:bg-blue-700 transition-colors"
-            >
-              Browse Files
-            </label>
+        <div className="p-4 rounded-full bg-[#1A1A1A] mb-4 group-hover:scale-110 transition-transform duration-300">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="text-gray-400"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="17 8 12 3 7 8" />
+            <line x1="12" y1="3" x2="12" y2="15" />
+          </svg>
+        </div>
+
+        <h3 className="text-lg font-medium text-white mb-2">
+          {file ? file.name : "Drop your resume here"}
+        </h3>
+        <p className="text-sm text-gray-500">Supported File Types: PDF</p>
+
+        {uploading && (
+          <div className="absolute inset-0 bg-black/50 flex items-center justify-center rounded-2xl backdrop-blur-sm">
+            <div className="text-white">Processing...</div>
           </div>
         )}
       </div>
 
-      {file && (
-        <div className="mt-6 text-center">
-          <button
-            onClick={handleUpload}
-            disabled={uploading}
-            className={`px-6 py-3 rounded-md text-white font-medium transition-colors ${
-              uploading
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-green-600 hover:bg-green-700"
-            }`}
-          >
-            {uploading ? "Processing..." : "Generate Portfolio"}
-          </button>
-        </div>
+      {message && (
+        <div className="text-center text-sm text-red-400">{message}</div>
       )}
 
-      {message && (
-        <div
-          className={`mt-4 text-center p-3 rounded ${
-            message.includes("success")
-              ? "bg-green-900/30 text-green-200 border border-green-800"
-              : "bg-red-900/30 text-red-200 border border-red-800"
-          }`}
+      {/* 6. Primary CTA Button */}
+      <button
+        onClick={handleUpload}
+        className="w-full py-4 rounded-xl bg-[#EAEAEA] text-black font-semibold text-lg hover:scale-[1.02] transition-transform duration-200 flex items-center justify-center gap-2"
+      >
+        {uploading ? "Creating..." : "Create My Portfolio Now"}
+        {!uploading && <span>→</span>}
+      </button>
+
+      {/* 7. Secondary Link */}
+      <div className="text-center space-y-1">
+        <p className="text-sm text-gray-500">
+          Don’t have a resume? No problem!
+        </p>
+        <a
+          href="#"
+          className="text-sm text-gray-400 underline hover:text-white transition-colors"
         >
-          {message}
-        </div>
-      )}
+          Create portfolio manually instead →
+        </a>
+      </div>
     </div>
   );
 }
