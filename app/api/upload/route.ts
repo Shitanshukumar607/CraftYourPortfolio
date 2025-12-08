@@ -1,4 +1,7 @@
+import { parseResumeText } from "@/utils/parseText";
 import { NextRequest, NextResponse } from "next/server";
+// @ts-ignore
+import pdf from "pdf-parse-fixed";
 
 export async function POST(request: NextRequest) {
   try {
@@ -9,16 +12,17 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "No file received." }, { status: 400 });
     }
 
-    // Here you would handle the file processing logic
-    // For example, saving it to disk or uploading to cloud storage
-    console.log(`Received file: ${file.name}, size: ${file.size} bytes`);
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
 
-    // Simulate processing delay
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    const rawText = await pdf(buffer);
+    console.log(rawText.text);
+
+    const parsedData = await parseResumeText(rawText.text);
+    console.log("Parsed Data:", parsedData);
 
     return NextResponse.json({
-      message: "File uploaded successfully",
-      filename: file.name,
+      message: parsedData,
     });
   } catch (error) {
     console.error("Error handling upload:", error);

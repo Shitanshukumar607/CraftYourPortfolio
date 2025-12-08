@@ -53,7 +53,7 @@ export default function FileDropZone() {
       });
 
       if (response.ok) {
-        setMessage("File uploaded successfully! Generating portfolio...");
+        setMessage(JSON.stringify(await response.json()));
       } else {
         setMessage("Upload failed. Please try again.");
       }
