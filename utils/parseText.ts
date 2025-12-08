@@ -9,61 +9,227 @@ const model = genAI.getGenerativeModel({
     responseSchema: {
       type: SchemaType.OBJECT,
       properties: {
-        name: { type: SchemaType.STRING },
-        title: { type: SchemaType.STRING, nullable: true },
-        location: { type: SchemaType.STRING, nullable: true },
-        summary: { type: SchemaType.STRING, nullable: true },
-        skills: {
-          type: SchemaType.ARRAY,
-          items: { type: SchemaType.STRING },
-        },
-        education: {
-          type: SchemaType.ARRAY,
-          items: {
-            type: SchemaType.OBJECT,
-            properties: {
-              degree: { type: SchemaType.STRING },
-              institution: { type: SchemaType.STRING },
-              year: { type: SchemaType.STRING, nullable: true },
-            },
-            required: ["degree", "institution"],
+        settings: {
+          type: SchemaType.OBJECT,
+          properties: {
+            name: { type: SchemaType.STRING },
+            title: { type: SchemaType.STRING, nullable: true },
+            location: { type: SchemaType.STRING, nullable: true },
+            summary: { type: SchemaType.STRING, nullable: true },
+            profileImage: { type: SchemaType.STRING, nullable: true },
           },
+          required: ["name"],
         },
-        experience: {
-          type: SchemaType.ARRAY,
-          items: {
-            type: SchemaType.OBJECT,
-            properties: {
-              company: { type: SchemaType.STRING },
-              role: { type: SchemaType.STRING },
-              startDate: { type: SchemaType.STRING, nullable: true },
-              endDate: { type: SchemaType.STRING, nullable: true },
-              description: { type: SchemaType.STRING, nullable: true },
+        sections: {
+          type: SchemaType.OBJECT,
+          properties: {
+            hero: {
+              type: SchemaType.OBJECT,
+              properties: {
+                enabled: { type: SchemaType.BOOLEAN },
+                ctaButtons: {
+                  type: SchemaType.ARRAY,
+                  items: {
+                    type: SchemaType.OBJECT,
+                    properties: {
+                      text: { type: SchemaType.STRING },
+                      url: { type: SchemaType.STRING },
+                    },
+                    required: ["text", "url"],
+                  },
+                },
+              },
+              required: ["enabled", "ctaButtons"],
             },
-            required: ["company", "role"],
+            about: {
+              type: SchemaType.OBJECT,
+              properties: {
+                enabled: { type: SchemaType.BOOLEAN },
+                skills: {
+                  type: SchemaType.OBJECT,
+                  properties: {
+                    enabled: { type: SchemaType.BOOLEAN },
+                    title: { type: SchemaType.STRING },
+                    items: {
+                      type: SchemaType.ARRAY,
+                      items: { type: SchemaType.STRING },
+                    },
+                  },
+                  required: ["enabled", "title", "items"],
+                },
+              },
+              required: ["enabled", "skills"],
+            },
+            experience: {
+              type: SchemaType.OBJECT,
+              properties: {
+                enabled: { type: SchemaType.BOOLEAN },
+                title: { type: SchemaType.STRING },
+                items: {
+                  type: SchemaType.ARRAY,
+                  items: {
+                    type: SchemaType.OBJECT,
+                    properties: {
+                      company: { type: SchemaType.STRING },
+                      role: { type: SchemaType.STRING },
+                      period: { type: SchemaType.STRING },
+                      description: { type: SchemaType.STRING },
+                    },
+                    required: ["company", "role", "period", "description"],
+                  },
+                },
+              },
+              required: ["enabled", "title", "items"],
+            },
+            projects: {
+              type: SchemaType.OBJECT,
+              properties: {
+                enabled: { type: SchemaType.BOOLEAN },
+                title: { type: SchemaType.STRING },
+                items: {
+                  type: SchemaType.ARRAY,
+                  items: {
+                    type: SchemaType.OBJECT,
+                    properties: {
+                      title: { type: SchemaType.STRING },
+                      description: { type: SchemaType.STRING },
+                      tags: {
+                        type: SchemaType.ARRAY,
+                        items: { type: SchemaType.STRING },
+                      },
+                      previewUrl: { type: SchemaType.STRING },
+                      repoUrl: { type: SchemaType.STRING },
+                    },
+                    required: [
+                      "title",
+                      "description",
+                      "tags",
+                      "previewUrl",
+                      "repoUrl",
+                    ],
+                  },
+                },
+              },
+              required: ["enabled", "title", "items"],
+            },
+            education: {
+              type: SchemaType.OBJECT,
+              properties: {
+                enabled: { type: SchemaType.BOOLEAN },
+                title: { type: SchemaType.STRING },
+                items: {
+                  type: SchemaType.ARRAY,
+                  items: {
+                    type: SchemaType.OBJECT,
+                    properties: {
+                      institution: { type: SchemaType.STRING },
+                      degree: { type: SchemaType.STRING },
+                      period: { type: SchemaType.STRING },
+                    },
+                    required: ["institution", "degree", "period"],
+                  },
+                },
+              },
+              required: ["enabled", "title", "items"],
+            },
+            achievements: {
+              type: SchemaType.OBJECT,
+              properties: {
+                enabled: { type: SchemaType.BOOLEAN },
+                title: { type: SchemaType.STRING },
+                items: {
+                  type: SchemaType.ARRAY,
+                  items: {
+                    type: SchemaType.OBJECT,
+                    properties: {
+                      title: { type: SchemaType.STRING },
+                      description: { type: SchemaType.STRING },
+                    },
+                    required: ["title", "description"],
+                  },
+                },
+              },
+              required: ["enabled", "title", "items"],
+            },
+            contact: {
+              type: SchemaType.OBJECT,
+              properties: {
+                enabled: { type: SchemaType.BOOLEAN },
+                title: { type: SchemaType.STRING },
+                email: { type: SchemaType.STRING },
+                phone: { type: SchemaType.STRING, nullable: true },
+                location: { type: SchemaType.STRING },
+              },
+              required: ["enabled", "title", "email", "location"],
+            },
+            social: {
+              type: SchemaType.OBJECT,
+              properties: {
+                enabled: { type: SchemaType.BOOLEAN },
+                items: {
+                  type: SchemaType.ARRAY,
+                  items: {
+                    type: SchemaType.OBJECT,
+                    properties: {
+                      platform: { type: SchemaType.STRING },
+                      url: { type: SchemaType.STRING },
+                      icon: { type: SchemaType.STRING },
+                    },
+                    required: ["platform", "url", "icon"],
+                  },
+                },
+              },
+              required: ["enabled", "items"],
+            },
           },
+          required: [
+            "hero",
+            "about",
+            "experience",
+            "projects",
+            "education",
+            "achievements",
+            "contact",
+            "social",
+          ],
         },
-        projects: {
-          type: SchemaType.ARRAY,
-          items: {
-            type: SchemaType.OBJECT,
-            properties: {
-              name: { type: SchemaType.STRING },
-              description: { type: SchemaType.STRING, nullable: true },
-              link: { type: SchemaType.STRING, nullable: true },
+        navigation: {
+          type: SchemaType.OBJECT,
+          properties: {
+            enabled: { type: SchemaType.BOOLEAN },
+            items: {
+              type: SchemaType.ARRAY,
+              items: {
+                type: SchemaType.OBJECT,
+                properties: {
+                  name: { type: SchemaType.STRING },
+                  url: { type: SchemaType.STRING },
+                },
+                required: ["name", "url"],
+              },
             },
-            required: ["name"],
           },
+          required: ["enabled", "items"],
+        },
+        footer: {
+          type: SchemaType.OBJECT,
+          properties: {
+            enabled: { type: SchemaType.BOOLEAN },
+            copyright: { type: SchemaType.STRING },
+          },
+          required: ["enabled", "copyright"],
         },
       },
-      required: ["name", "skills", "education", "experience", "projects"],
+      required: ["settings", "sections", "navigation", "footer"],
     },
   },
 });
 
 export async function parseResumeText(text: string) {
   const result = await model.generateContent(
-    "Extract the following details from the resume text and format them as JSON according to given schema: " +
+    "Extract the following details from the resume text and format them as JSON according to given schema. " +
+      "For fields that are not present in the resume, use sensible defaults or empty strings/arrays. " +
+      "Ensure 'enabled' is true for sections that have data. " +
       "\n\nResume Text:\n" +
       text
   );

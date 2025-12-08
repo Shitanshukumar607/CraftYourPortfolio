@@ -1,64 +1,38 @@
 "use client";
 
-import { useState } from "react";
-import PortfolioTemplate, { PortfolioData } from "./PortfolioTemplate";
+import React from "react";
+import PortfolioTemplate from "./PortfolioTemplate";
 import { ArrowLeft, Monitor, Smartphone } from "lucide-react";
+import { usePortfolioStore } from "@/store/usePortfolioStore";
 
 export default function PortfolioBuilder() {
-  const [viewMode, setViewMode] = useState<"desktop" | "mobile">("desktop");
-  const [formData, setFormData] = useState<PortfolioData>({
-    fullName: "John Doe",
-    title: "Full Stack Developer",
-    location: "San Francisco, CA",
-    summary:
-      "I build accessible, pixel-perfect, performant, and web experiences. Passionate about creating software that solves real-world problems and delights users.",
-    imageUrl: "",
-    skills: [
-      "JavaScript",
-      "TypeScript",
-      "React",
-      "Next.js",
-      "Node.js",
-      "Tailwind CSS",
-      "PostgreSQL",
-      "GraphQL",
-      "Docker",
-      "AWS",
-    ],
-    socialLinks: {
-      github: "#",
-      linkedin: "#",
-      email: "mailto:hello@example.com",
-    },
-  });
+  const {
+    portfolioData,
+    viewMode,
+    setViewMode,
+    updateSettings,
+    updateSocialLink,
+    updateSkills,
+  } = usePortfolioStore();
 
-  const handleInputChange = (
+  const handleSettingsChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    updateSettings({ [name]: value });
   };
 
-  const handleSocialChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      socialLinks: {
-        ...prev.socialLinks,
-        [name]: value,
-      },
-    }));
+  const handleSocialChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    platform: string
+  ) => {
+    const { value } = e.target;
+    updateSocialLink(platform, value);
   };
 
   const handleSkillsChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value;
-    setFormData((prev) => ({
-      ...prev,
-      skills: value.split(",").map((skill) => skill.trim()),
-    }));
+    updateSkills(value.split(",").map((skill) => skill.trim()));
   };
 
   return (
@@ -109,9 +83,9 @@ export default function PortfolioBuilder() {
                   </label>
                   <input
                     type="text"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleInputChange}
+                    name="name"
+                    value={portfolioData.settings.name}
+                    onChange={handleSettingsChange}
                     className="w-full px-3 py-2 border border-neutral-200 dark:border-neutral-800 rounded-md bg-transparent"
                   />
                 </div>
@@ -122,8 +96,8 @@ export default function PortfolioBuilder() {
                   <input
                     type="text"
                     name="title"
-                    value={formData.title}
-                    onChange={handleInputChange}
+                    value={portfolioData.settings.title}
+                    onChange={handleSettingsChange}
                     className="w-full px-3 py-2 border border-neutral-200 dark:border-neutral-800 rounded-md bg-transparent"
                   />
                 </div>
@@ -134,8 +108,8 @@ export default function PortfolioBuilder() {
                   <input
                     type="text"
                     name="location"
-                    value={formData.location}
-                    onChange={handleInputChange}
+                    value={portfolioData.settings.location}
+                    onChange={handleSettingsChange}
                     className="w-full px-3 py-2 border border-neutral-200 dark:border-neutral-800 rounded-md bg-transparent"
                   />
                 </div>
@@ -145,9 +119,9 @@ export default function PortfolioBuilder() {
                   </label>
                   <input
                     type="text"
-                    name="imageUrl"
-                    value={formData.imageUrl}
-                    onChange={handleInputChange}
+                    name="profileImage"
+                    value={portfolioData.settings.profileImage}
+                    onChange={handleSettingsChange}
                     className="w-full px-3 py-2 border border-neutral-200 dark:border-neutral-800 rounded-md bg-transparent"
                     placeholder="https://example.com/image.jpg"
                   />
@@ -159,8 +133,8 @@ export default function PortfolioBuilder() {
               <h2 className="text-lg font-bold mb-4">Short Summary</h2>
               <textarea
                 name="summary"
-                value={formData.summary}
-                onChange={handleInputChange}
+                value={portfolioData.settings.summary}
+                onChange={handleSettingsChange}
                 rows={4}
                 className="w-full px-3 py-2 border border-neutral-200 dark:border-neutral-800 rounded-md bg-transparent resize-none"
               />
@@ -175,9 +149,12 @@ export default function PortfolioBuilder() {
                   </label>
                   <input
                     type="text"
-                    name="github"
-                    value={formData.socialLinks.github}
-                    onChange={handleSocialChange}
+                    value={
+                      portfolioData.sections.social.items.find(
+                        (i) => i.platform === "github"
+                      )?.url || ""
+                    }
+                    onChange={(e) => handleSocialChange(e, "github")}
                     className="w-full px-3 py-2 border border-neutral-200 dark:border-neutral-800 rounded-md bg-transparent"
                   />
                 </div>
@@ -187,21 +164,12 @@ export default function PortfolioBuilder() {
                   </label>
                   <input
                     type="text"
-                    name="linkedin"
-                    value={formData.socialLinks.linkedin}
-                    onChange={handleSocialChange}
-                    className="w-full px-3 py-2 border border-neutral-200 dark:border-neutral-800 rounded-md bg-transparent"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    Email
-                  </label>
-                  <input
-                    type="text"
-                    name="email"
-                    value={formData.socialLinks.email}
-                    onChange={handleSocialChange}
+                    value={
+                      portfolioData.sections.social.items.find(
+                        (i) => i.platform === "linkedin"
+                      )?.url || ""
+                    }
+                    onChange={(e) => handleSocialChange(e, "linkedin")}
                     className="w-full px-3 py-2 border border-neutral-200 dark:border-neutral-800 rounded-md bg-transparent"
                   />
                 </div>
@@ -215,7 +183,7 @@ export default function PortfolioBuilder() {
               </p>
               <textarea
                 name="skills"
-                value={formData.skills.join(", ")}
+                value={portfolioData.sections.about.skills.items.join(", ")}
                 onChange={handleSkillsChange}
                 rows={4}
                 className="w-full px-3 py-2 border border-neutral-200 dark:border-neutral-800 rounded-md bg-transparent resize-none"
@@ -240,7 +208,7 @@ export default function PortfolioBuilder() {
                 }`}
               >
                 <div className={viewMode === "mobile" ? "origin-top" : ""}>
-                  <PortfolioTemplate data={formData} viewMode={viewMode} />
+                  <PortfolioTemplate />
                 </div>
               </div>
             </div>
