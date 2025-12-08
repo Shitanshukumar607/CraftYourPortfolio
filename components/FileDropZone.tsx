@@ -2,12 +2,16 @@
 
 import { ArrowRight, Upload } from "lucide-react";
 import { useCallback, useState } from "react";
+import { usePortfolioStore } from "@/store/usePortfolioStore";
+import { useRouter } from "next/navigation";
 
 export default function FileDropZone() {
   const [isDragging, setIsDragging] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
   const [message, setMessage] = useState("");
+  const { setPortfolioData } = usePortfolioStore();
+  const router = useRouter();
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -53,7 +57,9 @@ export default function FileDropZone() {
       });
 
       if (response.ok) {
-        setMessage(JSON.stringify(await response.json()));
+        const data = await response.json();
+        setPortfolioData(data.message);
+        router.push("/builder");
       } else {
         setMessage("Upload failed. Please try again.");
       }
