@@ -18,3 +18,11 @@ body {
   color: var(--foreground);
   font-family: var(--font);
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  scrollbar-width: none;
+}
