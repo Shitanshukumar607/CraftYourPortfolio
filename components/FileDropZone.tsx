@@ -1,7 +1,7 @@
 "use client";
 
-import { Upload } from "lucide-react";
-import { useState, useCallback } from "react";
+import { ArrowRight, Upload } from "lucide-react";
+import { useCallback, useState } from "react";
 
 export default function FileDropZone() {
   const [isDragging, setIsDragging] = useState(false);
@@ -115,10 +115,15 @@ export default function FileDropZone() {
 
       <button
         onClick={handleUpload}
-        className="w-full py-4 rounded-xl bg-[#EAEAEA] text-black font-semibold text-lg hover:scale-[1.02] transition-transform duration-200 flex items-center justify-center gap-2"
+        disabled={!file || uploading}
+        className={`w-full py-4 rounded-xl font-semibold text-lg transition-all duration-200 flex items-center justify-center gap-2 ${
+          !file || uploading
+            ? "bg-gray-600 text-gray-400 cursor-not-allowed"
+            : "bg-[#EAEAEA] text-black hover:scale-[1.02]"
+        }`}
       >
-        {uploading ? "Creating..." : "Create My Portfolio Now"}
-        {!uploading && <span>→</span>}
+        {uploading ? "Creating..." : file ? "Submit" : "Create Portfolio Now"}
+        <ArrowRight />
       </button>
 
       <div className="text-center space-y-1">
