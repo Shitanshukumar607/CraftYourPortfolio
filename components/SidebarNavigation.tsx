@@ -24,9 +24,9 @@ export default function SidebarNavigation() {
     { id: "section-personal", icon: User, label: "Personal Info" },
     { id: "section-social", icon: Share2, label: "Social Links" },
     { id: "section-skills", icon: Brain, label: "Skills" },
+    { id: "section-projects", icon: FolderOpen, label: "Projects" },
     { id: "section-experience", icon: Briefcase, label: "Experience" },
     { id: "section-education", icon: GraduationCap, label: "Education" },
-    { id: "section-projects", icon: FolderOpen, label: "Projects" },
     { id: "section-achievements", icon: Award, label: "Achievements" },
     { id: "section-contact", icon: Mail, label: "Contact" },
   ];
