@@ -157,7 +157,7 @@ const model = genAI.getGenerativeModel({
                 enabled: { type: SchemaType.BOOLEAN },
                 title: { type: SchemaType.STRING },
                 email: { type: SchemaType.STRING },
-                phone: { type: SchemaType.STRING, nullable: true },
+                phone: { type: SchemaType.STRING },
                 location: { type: SchemaType.STRING },
               },
               required: ["enabled", "title", "email", "location"],
@@ -230,6 +230,7 @@ export async function parseResumeText(text: string) {
     "Extract the following details from the resume text and format them as JSON according to given schema. " +
       "For fields that are not present in the resume, use sensible defaults or empty strings/arrays. " +
       "Ensure 'enabled' is true for sections that have data. " +
+      "IMPORTANT: Ensure all 'description' fields (in experience, projects, achievements, etc.) are concise and strictly limited to a maximum of 25-30 words. Summarize longer content to fit this limit. " +
       "\n\nResume Text:\n" +
       text
   );

@@ -39,14 +39,14 @@ export default function BuilderSidebar() {
   };
 
   return (
-    <aside className="w-[420px] shrink-0 border-r border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 overflow-y-auto">
-      <div className="p-6 space-y-8">
+    <aside className="w-[420px] shrink-0 border-r border-rose-900/40 bg-linear-to-b from-[#080217] via-[#040a1f] to-[#01040e] shadow-[0_35px_70px_rgba(8,145,178,0.2)] overflow-y-auto">
+      <div className="p-6 space-y-8 text-neutral-100">
         <div id="section-personal">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold">Personal Info</h2>
+            <h2 className="text-lg font-bold text-rose-200">Personal Info</h2>
             <button
               onClick={() => toggleSection("hero")}
-              className="p-1 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded"
+              className="relative group p-1 rounded text-neutral-400 transition duration-200 ease-out hover:bg-rose-500/10 hover:text-rose-200 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
               title={
                 portfolioData.sections.hero.enabled
                   ? "Hide Section"
@@ -54,15 +54,15 @@ export default function BuilderSidebar() {
               }
             >
               {portfolioData.sections.hero.enabled ? (
-                <Eye size={18} />
+                <Eye size={18} className="text-sky-300" />
               ) : (
-                <EyeOff size={18} />
+                <EyeOff size={18} className="text-sky-300" />
               )}
             </button>
           </div>
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-sm font-medium mb-1 text-neutral-300">
                 Full Name
               </label>
               <input
@@ -70,11 +70,11 @@ export default function BuilderSidebar() {
                 name="name"
                 value={portfolioData.settings.name}
                 onChange={handleSettingsChange}
-                className="w-full px-3 py-2 border border-neutral-200 dark:border-neutral-800 rounded-md bg-transparent"
+                className="w-full px-3 py-2 border border-neutral-800/60 rounded-md bg-neutral-900/60 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition duration-200"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-sm font-medium mb-1 text-neutral-300">
                 Professional Title
               </label>
               <input
@@ -82,21 +82,23 @@ export default function BuilderSidebar() {
                 name="title"
                 value={portfolioData.settings.title}
                 onChange={handleSettingsChange}
-                className="w-full px-3 py-2 border border-neutral-200 dark:border-neutral-800 rounded-md bg-transparent"
+                className="w-full px-3 py-2 border border-neutral-800/60 rounded-md bg-neutral-900/60 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition duration-200"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Location</label>
+              <label className="block text-sm font-medium mb-1 text-neutral-300">
+                Location
+              </label>
               <input
                 type="text"
                 name="location"
                 value={portfolioData.settings.location}
                 onChange={handleSettingsChange}
-                className="w-full px-3 py-2 border border-neutral-200 dark:border-neutral-800 rounded-md bg-transparent"
+                className="w-full px-3 py-2 border border-neutral-800/60 rounded-md bg-neutral-900/60 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition duration-200"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-sm font-medium mb-1 text-neutral-300">
                 Profile Image URL
               </label>
               <input
@@ -104,7 +106,7 @@ export default function BuilderSidebar() {
                 name="profileImage"
                 value={portfolioData.settings.profileImage}
                 onChange={handleSettingsChange}
-                className="w-full px-3 py-2 border border-neutral-200 dark:border-neutral-800 rounded-md bg-transparent"
+                className="w-full px-3 py-2 border border-neutral-800/60 rounded-md bg-neutral-900/60 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition duration-200"
                 placeholder="https://example.com/image.jpg"
               />
             </div>
@@ -112,22 +114,24 @@ export default function BuilderSidebar() {
         </div>
 
         <div>
-          <h2 className="text-lg font-bold mb-4">Short Summary</h2>
+          <h2 className="text-lg font-bold text-rose-200 mb-4">
+            Short Summary
+          </h2>
           <textarea
             name="summary"
             value={portfolioData.settings.summary}
             onChange={handleSettingsChange}
             rows={4}
-            className="w-full px-3 py-2 border border-neutral-200 dark:border-neutral-800 rounded-md bg-transparent resize-none"
+            className="w-full px-3 py-2 border border-neutral-800/60 rounded-md bg-neutral-900/60 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition duration-200 resize-none"
           />
         </div>
 
         <div id="section-social">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold">Social Links</h2>
+            <h2 className="text-lg font-bold text-rose-200">Social Links</h2>
             <button
               onClick={() => toggleSection("social")}
-              className="p-1 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded"
+              className="relative group p-1 rounded text-neutral-400 transition duration-200 ease-out hover:bg-rose-500/10 hover:text-rose-200 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
               title={
                 portfolioData.sections.social.enabled
                   ? "Hide Section"
@@ -135,15 +139,15 @@ export default function BuilderSidebar() {
               }
             >
               {portfolioData.sections.social.enabled ? (
-                <Eye size={18} />
+                <Eye size={18} className="text-sky-300" />
               ) : (
-                <EyeOff size={18} />
+                <EyeOff size={18} className="text-sky-300" />
               )}
             </button>
           </div>
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-sm font-medium mb-1 text-neutral-300">
                 GitHub URL
               </label>
               <input
@@ -154,11 +158,11 @@ export default function BuilderSidebar() {
                   )?.url || ""
                 }
                 onChange={(e) => handleSocialChange(e, "github")}
-                className="w-full px-3 py-2 border border-neutral-200 dark:border-neutral-800 rounded-md bg-transparent"
+                className="w-full px-3 py-2 border border-neutral-800/60 rounded-md bg-neutral-900/60 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus-border-sky-500 transition duration-200"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-sm font-medium mb-1 text-neutral-300">
                 LinkedIn URL
               </label>
               <input
@@ -169,7 +173,7 @@ export default function BuilderSidebar() {
                   )?.url || ""
                 }
                 onChange={(e) => handleSocialChange(e, "linkedin")}
-                className="w-full px-3 py-2 border border-neutral-200 dark:border-neutral-800 rounded-md bg-transparent"
+                className="w-full px-3 py-2 border border-neutral-800/60 rounded-md bg-neutral-900/60 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition duration-200"
               />
             </div>
           </div>
@@ -177,10 +181,10 @@ export default function BuilderSidebar() {
 
         <div id="section-skills">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold">Skills</h2>
+            <h2 className="text-lg font-bold text-rose-200">Skills</h2>
             <button
               onClick={() => toggleSection("skills")}
-              className="p-1 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded"
+              className="relative group p-1 rounded text-neutral-400 transition duration-200 ease-out hover:bg-rose-500/10 hover:text-rose-200 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
               title={
                 portfolioData.sections.about.skills.enabled
                   ? "Hide Section"
@@ -188,29 +192,31 @@ export default function BuilderSidebar() {
               }
             >
               {portfolioData.sections.about.skills.enabled ? (
-                <Eye size={18} />
+                <Eye size={18} className="text-sky-300" />
               ) : (
-                <EyeOff size={18} />
+                <EyeOff size={18} className="text-sky-300" />
               )}
             </button>
           </div>
-          <p className="text-xs text-neutral-500 mb-2">Comma separated list</p>
+          <p className="text-xs text-sky-300/80 mb-2">Comma separated list</p>
           <textarea
             name="skills"
             value={portfolioData.sections.about.skills.items.join(", ")}
             onChange={handleSkillsChange}
             rows={4}
-            className="w-full px-3 py-2 border border-neutral-200 dark:border-neutral-800 rounded-md bg-transparent resize-none"
+            className="w-full px-3 py-2 border border-neutral-800/60 rounded-md bg-neutral-900/60 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition duration-200 resize-none"
           />
         </div>
 
         <div id="section-projects">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold">Featured Projects</h2>
+            <h2 className="text-lg font-bold text-rose-200">
+              Featured Projects
+            </h2>
             <div className="flex gap-2">
               <button
                 onClick={() => toggleSection("projects")}
-                className="p-1 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded"
+                className="relative group p-1 rounded text-neutral-400 transition duration-200 ease-out hover:bg-rose-500/10 hover:text-rose-200 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
                 title={
                   portfolioData.sections.projects.enabled
                     ? "Hide Section"
@@ -218,9 +224,9 @@ export default function BuilderSidebar() {
                 }
               >
                 {portfolioData.sections.projects.enabled ? (
-                  <Eye size={18} />
+                  <Eye size={18} className="text-sky-300" />
                 ) : (
-                  <EyeOff size={18} />
+                  <EyeOff size={18} className="text-sky-300" />
                 )}
               </button>
               <button
@@ -236,9 +242,13 @@ export default function BuilderSidebar() {
                     },
                   ])
                 }
-                className="p-1 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded"
+                className="relative group p-1 rounded bg-amber-500/10 text-amber-200 transition duration-200 ease-out hover:bg-amber-500/20 hover:shadow-lg hover:shadow-amber-500/30 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                title="Add Project"
               >
                 <Plus size={16} />
+                <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-neutral-900/90 px-2 py-1 text-xs text-neutral-100 opacity-0 shadow-lg shadow-sky-900/20 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+                  Add Project
+                </span>
               </button>
             </div>
           </div>
@@ -246,7 +256,7 @@ export default function BuilderSidebar() {
             {portfolioData.sections.projects.items.map((project, idx) => (
               <div
                 key={idx}
-                className="p-4 border border-neutral-200 dark:border-neutral-800 rounded-lg space-y-3"
+                className="p-4 border border-neutral-800/70 rounded-lg space-y-3 bg-neutral-900/40 shadow-inner shadow-amber-900/10"
               >
                 <div className="flex justify-between">
                   <input
@@ -259,7 +269,7 @@ export default function BuilderSidebar() {
                       newProjects[idx].title = e.target.value;
                       updateProjects(newProjects);
                     }}
-                    className="font-medium bg-transparent w-full"
+                    className="font-medium bg-transparent w-full text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-500/60 rounded transition duration-200"
                     placeholder="Project Title"
                   />
                   <button
@@ -270,9 +280,12 @@ export default function BuilderSidebar() {
                         );
                       updateProjects(newProjects);
                     }}
-                    className="text-red-500 hover:text-red-600"
+                    className="relative group text-red-400 transition duration-200 hover:text-red-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 rounded"
                   >
                     <Trash2 size={16} />
+                    <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-neutral-900/90 px-2 py-1 text-xs text-neutral-100 opacity-0 shadow-lg shadow-red-900/20 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+                      Remove Project
+                    </span>
                   </button>
                 </div>
                 <textarea
@@ -285,7 +298,7 @@ export default function BuilderSidebar() {
                     updateProjects(newProjects);
                   }}
                   rows={2}
-                  className="w-full text-sm bg-transparent border border-neutral-200 dark:border-neutral-800 rounded p-2"
+                  className="w-full text-sm bg-neutral-900/60 border border-neutral-800/60 rounded p-2 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition duration-200"
                   placeholder="Description"
                 />
                 <input
@@ -300,7 +313,7 @@ export default function BuilderSidebar() {
                       .map((t) => t.trim());
                     updateProjects(newProjects);
                   }}
-                  className="w-full text-sm bg-transparent border border-neutral-200 dark:border-neutral-800 rounded p-2"
+                  className="w-full text-sm bg-neutral-900/60 border border-neutral-800/60 rounded p-2 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition duration-200"
                   placeholder="Tags (comma separated)"
                 />
                 <div className="grid grid-cols-2 gap-2">
@@ -314,7 +327,7 @@ export default function BuilderSidebar() {
                       newProjects[idx].repoUrl = e.target.value;
                       updateProjects(newProjects);
                     }}
-                    className="text-sm bg-transparent border border-neutral-200 dark:border-neutral-800 rounded p-2"
+                    className="text-sm bg-neutral-900/60 border border-neutral-800/60 rounded p-2 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition duration-200"
                     placeholder="Repo URL"
                   />
                   <input
@@ -327,7 +340,7 @@ export default function BuilderSidebar() {
                       newProjects[idx].previewUrl = e.target.value;
                       updateProjects(newProjects);
                     }}
-                    className="text-sm bg-transparent border border-neutral-200 dark:border-neutral-800 rounded p-2"
+                    className="text-sm bg-neutral-900/60 border border-neutral-800/60 rounded p-2 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition duration-200"
                     placeholder="Preview URL"
                   />
                 </div>
@@ -338,11 +351,11 @@ export default function BuilderSidebar() {
 
         <div id="section-experience">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold">Work Experience</h2>
+            <h2 className="text-lg font-bold text-rose-200">Work Experience</h2>
             <div className="flex gap-2">
               <button
                 onClick={() => toggleSection("experience")}
-                className="p-1 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded"
+                className="relative group p-1 rounded text-neutral-400 transition duration-200 ease-out hover:bg-rose-500/10 hover:text-rose-200 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
                 title={
                   portfolioData.sections.experience.enabled
                     ? "Hide Section"
@@ -350,9 +363,9 @@ export default function BuilderSidebar() {
                 }
               >
                 {portfolioData.sections.experience.enabled ? (
-                  <Eye size={18} />
+                  <Eye size={18} className="text-sky-300" />
                 ) : (
-                  <EyeOff size={18} />
+                  <EyeOff size={18} className="text-sky-300" />
                 )}
               </button>
               <button
@@ -367,9 +380,13 @@ export default function BuilderSidebar() {
                     },
                   ])
                 }
-                className="p-1 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded"
+                className="relative group p-1 rounded bg-amber-500/10 text-amber-200 transition duration-200 ease-out hover:bg-amber-500/20 hover:shadow-lg hover:shadow-amber-500/30 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                title="Add Experience"
               >
                 <Plus size={16} />
+                <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-neutral-900/90 px-2 py-1 text-xs text-neutral-100 opacity-0 shadow-lg shadow-sky-900/20 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+                  Add Experience
+                </span>
               </button>
             </div>
           </div>
@@ -377,7 +394,7 @@ export default function BuilderSidebar() {
             {portfolioData.sections.experience.items.map((exp, idx) => (
               <div
                 key={idx}
-                className="p-4 border border-neutral-200 dark:border-neutral-800 rounded-lg space-y-3"
+                className="p-4 border border-neutral-800/70 rounded-lg space-y-3 bg-neutral-900/40 shadow-inner shadow-amber-900/10"
               >
                 <div className="flex justify-between">
                   <input
@@ -390,7 +407,7 @@ export default function BuilderSidebar() {
                       newExperience[idx].role = e.target.value;
                       updateExperience(newExperience);
                     }}
-                    className="font-medium bg-transparent w-full"
+                    className="font-medium bg-transparent w-full text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-500/60 rounded transition duration-200"
                     placeholder="Role"
                   />
                   <button
@@ -401,9 +418,12 @@ export default function BuilderSidebar() {
                         );
                       updateExperience(newExperience);
                     }}
-                    className="text-red-500 hover:text-red-600"
+                    className="relative group text-red-400 transition duration-200 hover:text-red-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 rounded"
                   >
                     <Trash2 size={16} />
+                    <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-neutral-900/90 px-2 py-1 text-xs text-neutral-100 opacity-0 shadow-lg shadow-red-900/20 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+                      Remove Experience
+                    </span>
                   </button>
                 </div>
                 <input
@@ -416,7 +436,7 @@ export default function BuilderSidebar() {
                     newExperience[idx].company = e.target.value;
                     updateExperience(newExperience);
                   }}
-                  className="w-full text-sm bg-transparent border border-neutral-200 dark:border-neutral-800 rounded p-2"
+                  className="w-full text-sm bg-neutral-900/60 border border-neutral-800/60 rounded p-2 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition duration-200"
                   placeholder="Company"
                 />
                 <input
@@ -429,7 +449,7 @@ export default function BuilderSidebar() {
                     newExperience[idx].period = e.target.value;
                     updateExperience(newExperience);
                   }}
-                  className="w-full text-sm bg-transparent border border-neutral-200 dark:border-neutral-800 rounded p-2"
+                  className="w-full text-sm bg-neutral-900/60 border border-neutral-800/60 rounded p-2 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition duration-200"
                   placeholder="Period"
                 />
                 <textarea
@@ -442,7 +462,7 @@ export default function BuilderSidebar() {
                     updateExperience(newExperience);
                   }}
                   rows={2}
-                  className="w-full text-sm bg-transparent border border-neutral-200 dark:border-neutral-800 rounded p-2"
+                  className="w-full text-sm bg-neutral-900/60 border border-neutral-800/60 rounded p-2 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition duration-200"
                   placeholder="Description"
                 />
               </div>
@@ -452,11 +472,11 @@ export default function BuilderSidebar() {
 
         <div id="section-education">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold">Education</h2>
+            <h2 className="text-lg font-bold text-rose-200">Education</h2>
             <div className="flex gap-2">
               <button
                 onClick={() => toggleSection("education")}
-                className="p-1 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded"
+                className="relative group p-1 rounded text-neutral-400 transition duration-200 ease-out hover:bg-rose-500/10 hover:text-rose-200 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
                 title={
                   portfolioData.sections.education.enabled
                     ? "Hide Section"
@@ -464,9 +484,9 @@ export default function BuilderSidebar() {
                 }
               >
                 {portfolioData.sections.education.enabled ? (
-                  <Eye size={18} />
+                  <Eye size={18} className="text-sky-300" />
                 ) : (
-                  <EyeOff size={18} />
+                  <EyeOff size={18} className="text-sky-300" />
                 )}
               </button>
               <button
@@ -480,9 +500,13 @@ export default function BuilderSidebar() {
                     },
                   ])
                 }
-                className="p-1 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded"
+                className="relative group p-1 rounded bg-amber-500/10 text-amber-200 transition duration-200 ease-out hover:bg-amber-500/20 hover:shadow-lg hover:shadow-amber-500/30 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                title="Add Education"
               >
                 <Plus size={16} />
+                <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-neutral-900/90 px-2 py-1 text-xs text-neutral-100 opacity-0 shadow-lg shadow-amber-900/20 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+                  Add Education
+                </span>
               </button>
             </div>
           </div>
@@ -490,7 +514,7 @@ export default function BuilderSidebar() {
             {portfolioData.sections.education.items.map((edu, idx) => (
               <div
                 key={idx}
-                className="p-4 border border-neutral-200 dark:border-neutral-800 rounded-lg space-y-3"
+                className="p-4 border border-neutral-800/70 rounded-lg space-y-3 bg-neutral-900/40 shadow-inner shadow-amber-900/10"
               >
                 <div className="flex justify-between">
                   <input
@@ -503,7 +527,7 @@ export default function BuilderSidebar() {
                       newEducation[idx].institution = e.target.value;
                       updateEducation(newEducation);
                     }}
-                    className="font-medium bg-transparent w-full"
+                    className="font-medium bg-transparent w-full text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-500/60 rounded transition duration-200"
                     placeholder="Institution"
                   />
                   <button
@@ -514,9 +538,12 @@ export default function BuilderSidebar() {
                         );
                       updateEducation(newEducation);
                     }}
-                    className="text-red-500 hover:text-red-600"
+                    className="relative group text-red-400 transition duration-200 hover:text-red-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 rounded"
                   >
                     <Trash2 size={16} />
+                    <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-neutral-900/90 px-2 py-1 text-xs text-neutral-100 opacity-0 shadow-lg shadow-red-900/20 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+                      Remove Education
+                    </span>
                   </button>
                 </div>
                 <input
@@ -529,7 +556,7 @@ export default function BuilderSidebar() {
                     newEducation[idx].degree = e.target.value;
                     updateEducation(newEducation);
                   }}
-                  className="w-full text-sm bg-transparent border border-neutral-200 dark:border-neutral-800 rounded p-2"
+                  className="w-full text-sm bg-neutral-900/60 border border-neutral-800/60 rounded p-2 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition duration-200"
                   placeholder="Degree"
                 />
                 <input
@@ -542,7 +569,7 @@ export default function BuilderSidebar() {
                     newEducation[idx].period = e.target.value;
                     updateEducation(newEducation);
                   }}
-                  className="w-full text-sm bg-transparent border border-neutral-200 dark:border-neutral-800 rounded p-2"
+                  className="w-full text-sm bg-neutral-900/60 border border-neutral-800/60 rounded p-2 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition duration-200"
                   placeholder="Period"
                 />
               </div>
@@ -552,11 +579,11 @@ export default function BuilderSidebar() {
 
         <div id="section-achievements">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold">Achievements</h2>
+            <h2 className="text-lg font-bold text-rose-200">Achievements</h2>
             <div className="flex gap-2">
               <button
                 onClick={() => toggleSection("achievements")}
-                className="p-1 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded"
+                className="relative group p-1 rounded text-neutral-400 transition duration-200 ease-out hover:bg-rose-500/10 hover:text-rose-200 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
                 title={
                   portfolioData.sections.achievements.enabled
                     ? "Hide Section"
@@ -564,9 +591,9 @@ export default function BuilderSidebar() {
                 }
               >
                 {portfolioData.sections.achievements.enabled ? (
-                  <Eye size={18} />
+                  <Eye size={18} className="text-sky-300" />
                 ) : (
-                  <EyeOff size={18} />
+                  <EyeOff size={18} className="text-sky-300" />
                 )}
               </button>
               <button
@@ -579,9 +606,13 @@ export default function BuilderSidebar() {
                     },
                   ])
                 }
-                className="p-1 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded"
+                className="relative group p-1 rounded bg-amber-500/10 text-amber-200 transition duration-200 ease-out hover:bg-amber-500/20 hover:shadow-lg hover:shadow-amber-500/30 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                title="Add Achievement"
               >
                 <Plus size={16} />
+                <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-neutral-900/90 px-2 py-1 text-xs text-neutral-100 opacity-0 shadow-lg shadow-amber-900/20 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+                  Add Achievement
+                </span>
               </button>
             </div>
           </div>
@@ -589,7 +620,7 @@ export default function BuilderSidebar() {
             {portfolioData.sections.achievements.items.map((ach, idx) => (
               <div
                 key={idx}
-                className="p-4 border border-neutral-200 dark:border-neutral-800 rounded-lg space-y-3"
+                className="p-4 border border-neutral-800/70 rounded-lg space-y-3 bg-neutral-900/40 shadow-inner shadow-amber-900/10"
               >
                 <div className="flex justify-between">
                   <input
@@ -602,7 +633,7 @@ export default function BuilderSidebar() {
                       newAchievements[idx].title = e.target.value;
                       updateAchievements(newAchievements);
                     }}
-                    className="font-medium bg-transparent w-full"
+                    className="font-medium bg-transparent w-full text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-500/60 rounded transition duration-200"
                     placeholder="Title"
                   />
                   <button
@@ -613,9 +644,12 @@ export default function BuilderSidebar() {
                         );
                       updateAchievements(newAchievements);
                     }}
-                    className="text-red-500 hover:text-red-600"
+                    className="relative group text-red-400 transition duration-200 hover:text-red-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 rounded"
                   >
                     <Trash2 size={16} />
+                    <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-neutral-900/90 px-2 py-1 text-xs text-neutral-100 opacity-0 shadow-lg shadow-red-900/20 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+                      Remove Achievement
+                    </span>
                   </button>
                 </div>
                 <textarea
@@ -628,7 +662,7 @@ export default function BuilderSidebar() {
                     updateAchievements(newAchievements);
                   }}
                   rows={2}
-                  className="w-full text-sm bg-transparent border border-neutral-200 dark:border-neutral-800 rounded p-2"
+                  className="w-full text-sm bg-neutral-900/60 border border-neutral-800/60 rounded p-2 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition duration-200"
                   placeholder="Description"
                 />
               </div>
@@ -638,10 +672,10 @@ export default function BuilderSidebar() {
 
         <div id="section-contact">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold">Contact Info</h2>
+            <h2 className="text-lg font-bold text-rose-200">Contact Info</h2>
             <button
               onClick={() => toggleSection("contact")}
-              className="p-1 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded"
+              className="relative group p-1 rounded text-neutral-400 transition duration-200 ease-out hover:bg-rose-500/10 hover:text-rose-200 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
               title={
                 portfolioData.sections.contact.enabled
                   ? "Hide Section"
@@ -649,9 +683,9 @@ export default function BuilderSidebar() {
               }
             >
               {portfolioData.sections.contact.enabled ? (
-                <Eye size={18} />
+                <Eye size={18} className="text-sky-300" />
               ) : (
-                <EyeOff size={18} />
+                <EyeOff size={18} className="text-sky-300" />
               )}
             </button>
           </div>

@@ -32,12 +32,12 @@ export default function SidebarNavigation() {
   ];
 
   return (
-    <div className="w-16 shrink-0 border-r border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 flex flex-col items-center py-6 gap-4">
+    <div className="w-16 shrink-0 border-r border-rose-900/40 bg-linear-to-b from-[#08051a] via-[#05041a] to-[#02030b] flex flex-col items-center py-6 gap-4 shadow-lg shadow-sky-900/10">
       {navItems.map((item) => (
         <button
           key={item.id}
           onClick={() => scrollToSection(item.id)}
-          className="p-3 rounded-xl text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-all"
+          className="p-3 rounded-2xl text-sky-300/70 hover:bg-rose-500/15 hover:text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500/60 shadow-inner shadow-sky-900/20"
           title={item.label}
         >
           <item.icon size={20} />
