@@ -24,6 +24,7 @@ interface PortfolioStore {
   updateContact: (
     contact: Partial<PortfolioData["sections"]["contact"]>
   ) => void;
+  toggleSection: (section: keyof PortfolioData["sections"] | "skills") => void;
 }
 
 const defaultData: PortfolioData = {
@@ -307,4 +308,38 @@ export const usePortfolioStore = create<PortfolioStore>((set) => ({
         },
       },
     })),
+  toggleSection: (section) =>
+    set((state) => {
+      if (section === "skills") {
+        return {
+          portfolioData: {
+            ...state.portfolioData,
+            sections: {
+              ...state.portfolioData.sections,
+              about: {
+                ...state.portfolioData.sections.about,
+                skills: {
+                  ...state.portfolioData.sections.about.skills,
+                  enabled: !state.portfolioData.sections.about.skills.enabled,
+                },
+              },
+            },
+          },
+        };
+      }
+
+      const sectionKey = section as keyof PortfolioData["sections"];
+      return {
+        portfolioData: {
+          ...state.portfolioData,
+          sections: {
+            ...state.portfolioData.sections,
+            [sectionKey]: {
+              ...state.portfolioData.sections[sectionKey],
+              enabled: !state.portfolioData.sections[sectionKey].enabled,
+            },
+          },
+        },
+      };
+    }),
 }));

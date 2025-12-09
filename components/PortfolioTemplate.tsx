@@ -148,25 +148,27 @@ const PortfolioTemplate = () => {
             </section>
           )}
 
-          {about.enabled && about.skills.enabled && (
-            <section id="skills" className="space-y-8">
-              <h3 className="text-2xl font-bold border-b border-neutral-200 dark:border-neutral-800 pb-4">
-                {about.skills.title}
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {about.skills.items.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-4 py-2 bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 rounded-md text-sm font-medium border border-neutral-200 dark:border-neutral-800"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </section>
-          )}
+          {about.enabled &&
+            about.skills.enabled &&
+            about.skills.items.length > 0 && (
+              <section id="skills" className="space-y-8">
+                <h3 className="text-2xl font-bold border-b border-neutral-200 dark:border-neutral-800 pb-4">
+                  {about.skills.title}
+                </h3>
+                <div className="flex flex-wrap gap-3">
+                  {about.skills.items.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-4 py-2 bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 rounded-md text-sm font-medium border border-neutral-200 dark:border-neutral-800"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </section>
+            )}
 
-          {projects.enabled && (
+          {projects.enabled && projects.items.length > 0 && (
             <section id="projects" className="space-y-8">
               <h3 className="text-2xl font-bold border-b border-neutral-200 dark:border-neutral-800 pb-4">
                 {projects.title}
@@ -221,7 +223,7 @@ const PortfolioTemplate = () => {
             </section>
           )}
 
-          {experience.enabled && (
+          {experience.enabled && experience.items.length > 0 && (
             <section id="experience" className="space-y-8">
               <h3 className="text-2xl font-bold border-b border-neutral-200 dark:border-neutral-800 pb-4">
                 {experience.title}
@@ -255,7 +257,7 @@ const PortfolioTemplate = () => {
             </section>
           )}
 
-          {education.enabled && (
+          {education.enabled && education.items.length > 0 && (
             <section id="education" className="space-y-8">
               <h3 className="text-2xl font-bold border-b border-neutral-200 dark:border-neutral-800 pb-4">
                 {education.title}
@@ -282,7 +284,7 @@ const PortfolioTemplate = () => {
             </section>
           )}
 
-          {achievements.enabled && (
+          {achievements.enabled && achievements.items.length > 0 && (
             <section id="achievements" className="space-y-8">
               <h3 className="text-2xl font-bold border-b border-neutral-200 dark:border-neutral-800 pb-4">
                 {achievements.title}
