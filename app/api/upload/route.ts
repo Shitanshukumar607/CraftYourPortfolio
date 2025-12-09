@@ -16,10 +16,10 @@ export async function POST(request: NextRequest) {
     const buffer = Buffer.from(arrayBuffer);
 
     const rawText = await pdf(buffer);
-    console.log(rawText.text);
+    // console.log(rawText.text);
 
     const parsedData = await parseResumeText(rawText.text);
-    console.log("Parsed Data:", parsedData);
+    // console.log("Parsed Data:", parsedData);
 
     return NextResponse.json({
       message: parsedData,
