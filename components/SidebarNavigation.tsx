@@ -37,7 +37,7 @@ export default function SidebarNavigation() {
         <button
           key={item.id}
           onClick={() => scrollToSection(item.id)}
-          className="p-3 rounded-2xl text-sky-300/70 hover:bg-rose-500/15 hover:text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500/60 shadow-inner shadow-sky-900/20"
+          className="p-3 rounded-2xl text-neutral-400 hover:bg-neutral-800 hover:text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 "
           title={item.label}
         >
           <item.icon size={20} />

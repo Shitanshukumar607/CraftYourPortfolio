@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col font-sans">
+    <div className="max-w-7xl mx-auto min-h-screen bg-background text-foreground flex flex-col font-sans">
       <Navbar />
 
       <main className="grow flex flex-col items-center justify-center px-4 py-12 sm:px-6 lg:px-8">

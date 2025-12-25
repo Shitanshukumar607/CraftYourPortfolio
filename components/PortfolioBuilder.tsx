@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { usePortfolioStore } from "@/store/usePortfolioStore";
 import { ArrowLeft, Monitor, Smartphone, PanelLeft } from "lucide-react";
 import BuilderSidebar from "./BuilderSidebar";
@@ -8,16 +9,17 @@ import SidebarNavigation from "./SidebarNavigation";
 import PortfolioTemplate from "./PortfolioTemplate";
 
 export default function PortfolioBuilder() {
+  const router = useRouter();
   const { viewMode, setViewMode } = usePortfolioStore();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
-    <div className="flex flex-col h-screen bg-linear-to-br from-[#05060f] via-[#06031a] to-[#03010a] text-neutral-100">
-      <header className="h-16 border-b border-rose-900/40 bg-[#060a1c]/90 backdrop-blur-xl flex items-center justify-between px-6 shrink-0 shadow-lg shadow-sky-900/10">
+    <div className="flex flex-col h-screen text-neutral-100">
+      <header className="h-16 border-b border-rose-900/40 backdrop-blur-xl flex items-center justify-between px-6 shrink-0 shadow-lg shadow-sky-900/10">
         <div className="flex items-center gap-4">
           <button
             className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ease-out focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-rose-500/60 disabled:pointer-events-none disabled:opacity-50 rounded-md text-rose-200/80 hover:text-white hover:bg-rose-500/20 px-3 py-2 transition-all duration-300"
-            onClick={() => alert("u went back")}
+            onClick={() => router.back()}
           >
             <ArrowLeft size={28} className="pb-1 text-sky-300" />
             Back
