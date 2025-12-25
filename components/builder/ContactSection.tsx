@@ -9,10 +9,10 @@ export default function ContactSection() {
   return (
     <div id="section-contact">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-bold text-neutral-200">Contact Info</h2>
+        <h2 className="text-lg font-bold text-foreground">Contact Info</h2>
         <button
           onClick={() => toggleSection("contact")}
-          className="relative group p-1 rounded text-neutral-400 transition duration-200 ease-out hover:bg-neutral-800 hover:text-neutral-200 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500"
+          className="relative group p-1 rounded text-muted-foreground transition duration-200 ease-out hover:bg-accent hover:text-accent-foreground hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           title={
             portfolioData.sections.contact.enabled
               ? "Hide Section"
@@ -20,9 +20,9 @@ export default function ContactSection() {
           }
         >
           {portfolioData.sections.contact.enabled ? (
-            <Eye size={18} className="text-neutral-400" />
+            <Eye size={18} className="text-muted-foreground" />
           ) : (
-            <EyeOff size={18} className="text-neutral-400" />
+            <EyeOff size={18} className="text-muted-foreground" />
           )}
         </button>
       </div>
@@ -33,7 +33,7 @@ export default function ContactSection() {
             type="text"
             value={portfolioData.sections.contact.email}
             onChange={(e) => updateContact({ email: e.target.value })}
-            className="w-full px-3 py-2 border border-neutral-200 dark:border-neutral-800 rounded-md bg-transparent"
+            className="w-full px-3 py-2 border border-input rounded-md bg-background"
           />
         </div>
         <div>
@@ -42,7 +42,7 @@ export default function ContactSection() {
             type="text"
             value={portfolioData.sections.contact.phone || ""}
             onChange={(e) => updateContact({ phone: e.target.value })}
-            className="w-full px-3 py-2 border border-neutral-200 dark:border-neutral-800 rounded-md bg-transparent"
+            className="w-full px-3 py-2 border border-input rounded-md bg-background"
           />
         </div>
         <div>
@@ -51,7 +51,7 @@ export default function ContactSection() {
             type="text"
             value={portfolioData.sections.contact.location}
             onChange={(e) => updateContact({ location: e.target.value })}
-            className="w-full px-3 py-2 border border-neutral-200 dark:border-neutral-800 rounded-md bg-transparent"
+            className="w-full px-3 py-2 border border-input rounded-md bg-background"
           />
         </div>
       </div>

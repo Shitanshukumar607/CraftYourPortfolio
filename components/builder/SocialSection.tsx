@@ -19,10 +19,10 @@ export default function SocialSection() {
   return (
     <div id="section-social">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-bold text-neutral-200">Social Links</h2>
+        <h2 className="text-lg font-bold text-foreground">Social Links</h2>
         <button
           onClick={() => toggleSection("social")}
-          className="relative group p-1 rounded text-neutral-400 transition duration-200 ease-out hover:bg-neutral-800 hover:text-neutral-200 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500"
+          className="relative group p-1 rounded text-muted-foreground transition duration-200 ease-out hover:bg-accent hover:text-accent-foreground hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           title={
             portfolioData.sections.social.enabled
               ? "Hide Section"
@@ -30,15 +30,15 @@ export default function SocialSection() {
           }
         >
           {portfolioData.sections.social.enabled ? (
-            <Eye size={18} className="text-neutral-400" />
+            <Eye size={18} className="text-muted-foreground" />
           ) : (
-            <EyeOff size={18} className="text-neutral-400" />
+            <EyeOff size={18} className="text-muted-foreground" />
           )}
         </button>
       </div>
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium mb-1 text-neutral-300">
+          <label className="block text-sm font-medium mb-1 text-foreground">
             GitHub URL
           </label>
           <input
@@ -49,11 +49,11 @@ export default function SocialSection() {
               )?.url || ""
             }
             onChange={(e) => handleSocialChange(e, "github")}
-            className="w-full px-3 py-2 border border-neutral-800 rounded-md bg-neutral-900 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-neutral-700 focus-border-sky-500 transition duration-200"
+            className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring transition duration-200"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium mb-1 text-neutral-300">
+          <label className="block text-sm font-medium mb-1 text-foreground">
             LinkedIn URL
           </label>
           <input
@@ -64,7 +64,7 @@ export default function SocialSection() {
               )?.url || ""
             }
             onChange={(e) => handleSocialChange(e, "linkedin")}
-            className="w-full px-3 py-2 border border-neutral-800 rounded-md bg-neutral-900 text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-neutral-700 focus:border-neutral-700 transition duration-200"
+            className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring transition duration-200"
           />
         </div>
       </div>

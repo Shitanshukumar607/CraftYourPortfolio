@@ -33,15 +33,15 @@ export default function SidebarNavigation({
   ];
 
   return (
-    <div className="w-16 shrink-0 border-r border-rose-900/40 bg-linear-to-b from-[#08051a] via-[#05041a] to-[#02030b] flex flex-col items-center py-6 gap-4 shadow-lg shadow-sky-900/10">
+    <div className="w-16 shrink-0 border-r border-sidebar-border bg-sidebar flex flex-col items-center py-6 gap-4 shadow-sm">
       {navItems.map((item) => (
         <button
           key={item.id}
           onClick={() => onSectionChange(item.id)}
-          className={`p-3 rounded-2xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 ${
+          className={`p-3 rounded-2xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
             activeSection === item.id
-              ? "bg-neutral-800 text-white"
-              : "text-neutral-400 hover:bg-neutral-800 hover:text-white"
+              ? "bg-sidebar-accent text-sidebar-accent-foreground"
+              : "text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
           }`}
           title={item.label}
         >
