@@ -4,6 +4,7 @@ import { ArrowRight, Upload } from "lucide-react";
 import { useCallback, useState } from "react";
 import { usePortfolioStore } from "@/store/usePortfolioStore";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function FileDropZone() {
   const [isDragging, setIsDragging] = useState(false);
@@ -86,8 +87,8 @@ export default function FileDropZone() {
           transition-all duration-300 ease-in-out
           ${
             isDragging
-              ? "border-white bg-white/5"
-              : "border-[#2A2A2A] hover:border-gray-600 hover:bg-[#1A1A1A]"
+              ? "border-primary bg-primary/5"
+              : "border-border hover:border-primary/50 hover:bg-muted"
           }
         `}
       >
@@ -99,33 +100,35 @@ export default function FileDropZone() {
           onChange={handleFileChange}
         />
 
-        <div className="p-4 rounded-full bg-[#1A1A1A] mb-4 group-hover:scale-105 transition-transform duration-300">
-          <Upload size={28} className="text-gray-400" />
+        <div className="p-4 rounded-full bg-muted mb-4 group-hover:scale-105 transition-transform duration-300">
+          <Upload size={28} className="text-muted-foreground" />
         </div>
 
-        <h3 className="text-lg font-medium text-white mb-2">
+        <h3 className="text-lg font-medium text-foreground mb-2">
           {file ? file.name : "Drop your resume here"}
         </h3>
-        <p className="text-sm text-gray-500">Supported File Types: PDF</p>
+        <p className="text-sm text-muted-foreground">
+          Supported File Types: PDF
+        </p>
 
         {uploading && (
-          <div className="absolute inset-0 bg-black/50 flex items-center justify-center rounded-2xl backdrop-blur-sm">
-            <div className="text-white">Processing...</div>
+          <div className="absolute inset-0 bg-background/80 flex items-center justify-center rounded-2xl backdrop-blur-sm">
+            <div className="text-foreground">Processing...</div>
           </div>
         )}
       </div>
 
       {message && (
-        <div className="text-center text-sm text-red-400">{message}</div>
+        <div className="text-center text-sm text-destructive">{message}</div>
       )}
 
       <button
         onClick={handleUpload}
         disabled={!file || uploading}
-        className={`w-full py-4 rounded-xl font-semibold text-lg transition-all duration-200 flex items-center justify-center gap-2 ${
+        className={`w-full py-4 rounded-xl font-semibold text-lg transition-all duration-200 flex items-center justify-center gap-2 border- ${
           !file || uploading
-            ? "bg-gray-600 text-gray-400 cursor-not-allowed"
-            : "bg-[#EAEAEA] text-black hover:scale-[1.02]"
+            ? "bg-muted text-muted-foreground cursor-not-allowed"
+            : "bg-primary text-primary-foreground hover:scale-[1.02]"
         }`}
       >
         {uploading ? "Creating..." : file ? "Submit" : "Create Portfolio Now"}
@@ -133,15 +136,15 @@ export default function FileDropZone() {
       </button>
 
       <div className="text-center space-y-1">
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-muted-foreground">
           Don’t have a resume? No problem!
         </p>
-        <a
-          href="#"
-          className="text-sm text-gray-400 underline hover:text-white transition-colors"
+        <Link
+          href="/builder"
+          className="text-sm text-muted-foreground underline hover:text-foreground transition-colors"
         >
           Create portfolio manually instead →
-        </a>
+        </Link>
       </div>
     </div>
   );
