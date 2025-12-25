@@ -12,6 +12,7 @@ export default function PortfolioBuilder() {
   const router = useRouter();
   const { viewMode, setViewMode } = usePortfolioStore();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [activeSection, setActiveSection] = useState("section-personal");
 
   return (
     <div className="flex flex-col h-screen text-neutral-100">
@@ -67,14 +68,17 @@ export default function PortfolioBuilder() {
             isSidebarOpen ? "w-[484px] opacity-100" : "w-0 opacity-0"
           }`}
         >
-          <SidebarNavigation />
-          <BuilderSidebar />
+          <SidebarNavigation
+            activeSection={activeSection}
+            onSectionChange={setActiveSection}
+          />
+          <BuilderSidebar activeSection={activeSection} />
         </div>
 
         <main className="flex-1 flex flex-col">
           <div className="flex-1 overflow-y-auto p-8 flex justify-center">
             <div
-              className={`transition-all duration-300 ease-in-out bg-[#050b1a]/90 backdrop-blur-xl shadow-[0_25px_60px_rgba(15,23,42,0.55)] overflow-scroll border border-sky-900/40 ${
+              className={`transition-all duration-300 ease-in-out overflow-scroll border border-sky-900/40 ${
                 viewMode === "mobile"
                   ? "w-[450px] h-auto rounded-[40px] border-2 border-rose-900/50"
                   : "w-full max-w-6xl rounded-3xl"

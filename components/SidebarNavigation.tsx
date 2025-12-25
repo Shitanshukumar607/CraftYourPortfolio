@@ -12,14 +12,15 @@ import {
   Share2,
 } from "lucide-react";
 
-export default function SidebarNavigation() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+interface SidebarNavigationProps {
+  activeSection: string;
+  onSectionChange: (section: string) => void;
+}
 
+export default function SidebarNavigation({
+  activeSection,
+  onSectionChange,
+}: SidebarNavigationProps) {
   const navItems = [
     { id: "section-personal", icon: User, label: "Personal Info" },
     { id: "section-social", icon: Share2, label: "Social Links" },
@@ -36,8 +37,12 @@ export default function SidebarNavigation() {
       {navItems.map((item) => (
         <button
           key={item.id}
-          onClick={() => scrollToSection(item.id)}
-          className="p-3 rounded-2xl text-neutral-400 hover:bg-neutral-800 hover:text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 "
+          onClick={() => onSectionChange(item.id)}
+          className={`p-3 rounded-2xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 ${
+            activeSection === item.id
+              ? "bg-neutral-800 text-white"
+              : "text-neutral-400 hover:bg-neutral-800 hover:text-white"
+          }`}
           title={item.label}
         >
           <item.icon size={20} />
