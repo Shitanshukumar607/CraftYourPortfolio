@@ -82,7 +82,6 @@ export interface ContactSection {
   title: string;
   email: string;
   phone: string | null;
-  location: string;
 }
 
 export interface SocialItem {

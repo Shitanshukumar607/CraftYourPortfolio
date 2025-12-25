@@ -45,15 +45,6 @@ export default function ContactSection() {
             className="w-full px-3 py-2 border border-input rounded-md bg-background"
           />
         </div>
-        <div>
-          <label className="block text-sm font-medium mb-1">Location</label>
-          <input
-            type="text"
-            value={portfolioData.sections.contact.location}
-            onChange={(e) => updateContact({ location: e.target.value })}
-            className="w-full px-3 py-2 border border-input rounded-md bg-background"
-          />
-        </div>
       </div>
     </div>
   );

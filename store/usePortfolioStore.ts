@@ -173,7 +173,6 @@ const defaultData: PortfolioData = {
       title: "Contact",
       email: "hello@example.com",
       phone: null,
-      location: "San Francisco, CA",
     },
     social: {
       enabled: true,
