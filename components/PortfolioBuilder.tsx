@@ -11,7 +11,7 @@ import PortfolioTemplate from "./PortfolioTemplate";
 export default function PortfolioBuilder() {
   const router = useRouter();
   const { viewMode, setViewMode } = usePortfolioStore();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("section-personal");
 
   return (

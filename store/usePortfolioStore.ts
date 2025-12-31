@@ -34,7 +34,8 @@ const defaultData: PortfolioData = {
     location: "San Francisco, CA",
     summary:
       "I build accessible, pixel-perfect, performant, and web experiences. Passionate about creating software that solves real-world problems and delights users.",
-    profileImage: "",
+    profileImage:
+      "https://t4.ftcdn.net/jpg/04/31/64/75/360_F_431647519_usrbQ8Z983hTYe8zgA7t1XVc5fEtqcpa.jpg",
   },
   sections: {
     hero: {

@@ -464,19 +464,6 @@
       `;
           }
 
-          let footerHTML = "";
-          if (data.footer && data.footer.enabled) {
-            footerHTML = `
-        <footer class="py-8 text-center text-sm text-gray-500 dark:text-gray-600 flex flex-col items-center gap-4">
-            <p>${data.footer.copyright}</p>
-            <a href="https://craftyourportfolio.vercel.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">
-              <span>🚀</span>
-              <span>Built with craftyourportfolio.vercel.app</span>
-            </a>
-        </footer>
-      `;
-          }
-
           const content = `${headerHTML}
     <div class="flex flex-col min-h-screen">
       <div class="fixed top-4 right-4 z-50">
@@ -506,7 +493,6 @@
         ${contactHTML}
 
       </main>
-      ${footerHTML}
     </div>
     `;
 
